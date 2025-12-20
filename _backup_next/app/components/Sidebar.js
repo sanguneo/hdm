@@ -1,0 +1,153 @@
+'use client';
+import Link from 'next/link';
+
+export default function Sidebar({ title, items }) {
+  return (
+    <>
+      <aside className="sidebar">
+        <div className="sidebar-header">
+          <h2>{title}</h2>
+        </div>
+        <nav className="sidebar-nav">
+          <ul>
+            {items.map((item, index) => (
+              <li key={index}>
+                <Link 
+                  href={item.href} 
+                  className={`sidebar-link ${item.active ? 'active' : ''}`}
+                >
+                  {item.label}
+                  <span className="arrow">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+
+      <style jsx>{`
+        .sidebar {
+          width: 280px;
+          flex-shrink: 0;
+          height: fit-content;
+          position: sticky;
+          top: 100px;
+        }
+
+        .sidebar-header {
+          margin-bottom: 24px;
+          padding-left: 8px;
+        }
+
+        .sidebar-header h2 {
+          color: var(--primary-color);
+          font-size: 1.5rem;
+          margin: 0;
+          font-weight: 800;
+        }
+
+        .sidebar-nav ul {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .sidebar-nav :global(.sidebar-link) {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 18px 24px;
+          color: var(--text-secondary);
+          font-weight: 500;
+          background: white;
+          border: 1px solid transparent;
+          border-radius: var(--radius-md);
+          transition: all 0.2s ease;
+          box-shadow: var(--shadow-sm);
+          text-decoration: none;
+        }
+
+        .sidebar-nav :global(.sidebar-link:hover) {
+          background: white;
+          color: var(--accent-color);
+          border-color: var(--accent-color);
+          transform: translateX(5px);
+          box-shadow: var(--shadow-md);
+        }
+
+        .sidebar-nav :global(.sidebar-link.active) {
+          background: var(--accent-color);
+          color: white;
+          font-weight: 600;
+          box-shadow: var(--shadow-md);
+        }
+
+        .sidebar-nav :global(.arrow) {
+          font-size: 1.2rem;
+          opacity: 0;
+          transform: translateX(-10px);
+          transition: all 0.2s;
+        }
+
+        .sidebar-nav :global(.sidebar-link:hover .arrow) {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        
+        .sidebar-nav :global(.sidebar-link.active .arrow) {
+           opacity: 1;
+           transform: translateX(0);
+           color: white;
+        }
+
+        @media (max-width: 900px) {
+          .sidebar {
+            width: 100%;
+            position: static;
+            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+          }
+          
+          .sidebar-header {
+            margin-bottom: 16px;
+            padding-left: 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+          }
+
+          .sidebar-nav ul {
+            flex-direction: row;
+            overflow-x: auto;
+            gap: 12px;
+            padding-bottom: 4px; /* Space for scrollbar if needed */
+          }
+
+          .sidebar-nav :global(.sidebar-link) {
+            white-space: nowrap;
+            padding: 12px 20px;
+            box-shadow: none;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+          }
+
+          .sidebar-nav :global(.sidebar-link:hover) {
+             transform: none;
+             background: white;
+          }
+          
+          .sidebar-nav :global(.sidebar-link.active) {
+             background: var(--accent-color);
+             border-color: var(--accent-color);
+          }
+
+          .sidebar-nav :global(.arrow) { display: none; }
+          .sidebar-header { display: none; }
+        }
+      `}</style>
+    </>
+  );
+}
