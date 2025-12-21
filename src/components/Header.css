@@ -75,6 +75,7 @@
   height: 24px;
   position: relative;
   z-index: 1001;
+  right: 30px;
 }
 
 .hamburger {
@@ -155,5 +156,6 @@
 
   .mobile-toggle {
     display: block;
+    margin-right: 10px;
   }
 }

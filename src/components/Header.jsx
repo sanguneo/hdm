@@ -27,7 +27,6 @@ export default function Header() {
     { label: '적용분야', href: '/business' },
     { label: '제품소개', href: '/products/bldc' },
     { label: '생산 프로세스', href: '/production' },
-    { label: '개발 프로세스', href: '/development' },
     { label: '고객센터', href: '/contact' },
   ];
 

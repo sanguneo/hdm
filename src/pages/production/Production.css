@@ -15,48 +15,67 @@
   font-size: 1.1rem;
 }
 
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+.timeline-vertical {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.process-card {
-  background: white;
-  padding: 40px 30px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
+.phase-row {
+  display: flex;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.phase-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50px;
+  flex-shrink: 0;
+}
+
+.marker-circle {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
   position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.3s;
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
 }
 
-.process-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+.marker-line {
+  flex: 1;
+  width: 2px;
+  background: #e2e8f0;
+  margin-top: 10px;
+  min-height: 40px;
 }
 
-.step-number {
-  font-size: 4rem;
-  font-weight: 900;
-  color: var(--accent-color);
-  opacity: 0.1;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  line-height: 1;
+.phase-content {
+  flex: 1;
+  padding-top: 5px;
 }
 
-.step-title {
+.phase-title {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 16px;
-  position: relative;
+  color: var(--text-primary);
 }
 
-.step-desc {
+.phase-desc {
   color: var(--text-secondary);
+  font-size: 1rem;
   line-height: 1.6;
-  position: relative;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
 }

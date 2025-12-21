@@ -14,7 +14,6 @@ const routesToPrerender = [
   '/company/history',
   '/company/location',
   '/production',
-  '/development',
   '/contact',
   '/products/bldc',
   // Product Details

@@ -23,19 +23,12 @@ export default function Location() {
 
         <div className="info-grid">
           <div className="info-card">
-            <h4>HEAD OFFICE</h4>
+            <h4>OFFICE</h4>
             <div className="info-content">
               <p><strong>주소:</strong> 서울특별시 금천구 가산디지털2로 14 506 (가산동, 대륭테크노타운12차)</p>
               <p><strong>전화:</strong> 02-884-2053</p>
               <p><strong>팩스:</strong> 02-879-2053</p>
               <p><strong>이메일:</strong> okg1015@naver.com</p>
-            </div>
-          </div>
-          <div className="info-card">
-            <h4>FACTORY</h4>
-            <div className="info-content">
-              <p><strong>주소:</strong> 서울특별시 금천구 가산디지털2로 14 506 (가산동, 대륭테크노타운12차)</p>
-              <p><strong>전화:</strong> 02-884-2053</p>
             </div>
           </div>
         </div>

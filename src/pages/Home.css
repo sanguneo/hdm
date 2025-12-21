@@ -26,6 +26,7 @@
 .text-gradient {
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -76,12 +77,12 @@
 /* Feature Grid */
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
 }
 
 .feature-card {
-  padding: 40px;
+  padding: 30px;
   border-radius: var(--radius-lg);
   background: white;
   box-shadow: var(--shadow-sm);
