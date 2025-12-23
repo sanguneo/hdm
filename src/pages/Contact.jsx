@@ -1,20 +1,47 @@
 import SEO from '../components/SEO';
 
+function sanitizeInput(str) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    "/": '&#x2F;',
+  };
+  const reg = /[&<>"'/]/ig;
+  return str.replace(reg, (match) => (map[match]));
+}
+
+function validatePhone(phone) {
+  // Supports formats like: 010-1234-5678, 02-123-4567, 031-1234-5678
+  // Also allows numbers without hyphens
+  const regex = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+  return regex.test(phone);
+}
+
 async function handleSubmit(e) {
   e.preventDefault();
 
   const form = e.target;
+  const rawPhone = form.phone.value;
+
+  if (!validatePhone(rawPhone)) {
+    alert('올바른 전화번호 형식이 아닙니다. (예: 010-1234-5678)');
+    form.phone.focus();
+    return;
+  }
 
   const payload = {
-    company: form.company.value,
-    name: form.name.value,
-    phone: form.phone.value,
-    message: form.message.value,
+    company: sanitizeInput(form.company.value),
+    name: sanitizeInput(form.name.value),
+    phone: sanitizeInput(rawPhone),
+    message: sanitizeInput(form.message.value),
   };
 
-  const res = await fetch('https://script.google.com/macros/s/AKfycbw1quVnZD9dsXpRED41gYBNmsVzLEk8wX3yp0KEqxaYucfe6RZMN7g-Jfl51nT-mNXLbA/exec', {
+  const res = await fetch('https://script.google.com/macros/s/AKfycbyrYORb1oa-wIzNwPxXoJ6A0EXZ34ospPK1fsBeTIUjtIe5gsIIpgWsMCMWmXXGbnsDDg/exec', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(payload),
   });
 
