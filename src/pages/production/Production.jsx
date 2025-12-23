@@ -1,4 +1,3 @@
-import './Production.css';
 
 export default function ProductionProcess() {
   const steps = [

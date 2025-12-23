@@ -1,8 +1,13 @@
-import './Contact.css';
+import SEO from '../components/SEO';
 
 export default function Contact() {
   return (
     <div className="section container">
+      <SEO
+        title="고객센터"
+        description="현대모터스 고객센터. 제품 문의, 견적 요청, AS 안내."
+        url="/contact"
+      />
       <div className="page-header">
         <h2 className="title">고객센터</h2>
         <p className="description">궁금하신 점이 있으시면 언제든지 문의해주세요.</p>
@@ -11,9 +16,10 @@ export default function Contact() {
       <div className="contact-layout">
         <div className="contact-info">
           <div className="info-block">
-            <h3>Head Office & Factory</h3>
-            <p>서울특별시 금천구 가산디지털2로 14 506 (가산동, 대륭테크노타운12차)</p>
+            <h3>Office & Factory</h3>
+            <p>서울특별시 금천구 가산디지털2로 14<br />대륭테크노타운12차 506호</p>
           </div>
+
 
           <div className="info-block">
             <h3>Contact Info</h3>

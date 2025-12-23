@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './Header.css';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,8 +23,10 @@ export default function Header() {
 
   const navItems = [
     { label: '회사소개', href: '/company/greeting' },
-    { label: '적용분야', href: '/business' },
-    { label: '제품소개', href: '/products/bldc' },
+    // { label: '적용분야', href: '/business' },
+    { label: '제품소개', href: '/products/industry-dc' },
+    // { label: '산업용 DC Geared Motor', href: '/products/industry-dc' },
+    // { label: 'DC Geared Motor', href: '/products/dc-geared' },
     { label: '생산 프로세스', href: '/production' },
     { label: '고객센터', href: '/contact' },
   ];
@@ -34,7 +35,8 @@ export default function Header() {
     <header className={`header ${isScrolled ? 'scrolled' : ''} ${!isHome ? 'subpage' : ''}`}>
       <div className="container header-container">
         <Link to="/" className="logo">
-          현대모터스
+          <img src="/colored.svg" alt="logo" className="logo-icon" />
+          <span>현대모터스</span>
         </Link>
 
         {/* Desktop Nav */}

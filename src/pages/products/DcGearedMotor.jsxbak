@@ -1,0 +1,37 @@
+import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO';
+
+import { dcGearedProducts } from '../../data/dcGearedProducts';
+
+export default function DcGearedMotor() {
+  const products = dcGearedProducts;
+
+  return (
+    <div className="">
+      <SEO
+        title="DC Geared Motor"
+        description="정밀 DC 기어드 모터 제품군. 다양한 토크와 회전수를 제공합니다."
+        url="/products/dc-geared-motor"
+      />
+      <div className="page-header">
+        <h2 className="title">DC Geared Motor</h2>
+        <p className="description">
+          높은 정밀도와 강력한 토크를 제공하는 다양한 사이즈의 DC 기어드 모터 라인업입니다.
+        </p>
+      </div>
+
+      <div className="product-grid">
+        {products.map((product) => (
+          <Link to={`#`} key={product.id} className="product-card" onClick={(e) => e.preventDefault()}>
+            <div className="card-image">
+              <img src={product.img} alt={product.name} />
+            </div>
+            <div className="card-body">
+              <h3 className="product-name">{product.name}</h3>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}

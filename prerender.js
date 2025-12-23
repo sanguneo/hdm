@@ -4,28 +4,32 @@ import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
 import { preview } from 'vite';
 
+// Import data for dynamic routes
+import { industryDcProducts } from './src/data/industryDcProducts.js';
+// import { bldcProducts } from './src/data/bldcProducts.js';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const toAbsolute = (p) => path.resolve(__dirname, p);
 
+// Static Routes
 const routesToPrerender = [
   '/',
-  '/business',
   '/company/greeting',
   '/company/history',
   '/company/location',
   '/production',
   '/contact',
-  '/products/bldc',
-  // Product Details
-  '/products/bldc/BL001',
-  '/products/bldc/BL002',
-  '/products/bldc/BL003',
-  '/products/bldc/BL004',
+  // '/products/bldc',
+  '/products/industry-dc',
+  // '/products/dc-geared',
 ];
+
+// Add dynamic routes
+industryDcProducts.forEach(p => routesToPrerender.push(`/products/industry-dc/${p.id}`));
+// bldcProducts.forEach(p => routesToPrerender.push(`/products/bldc/${p.id}`));
 
 (async () => {
   console.log('Building for production...');
-  // Ensure we have a build to serve
   // Note: You should run `npm run build` before this script
   
   console.log('Starting preview server...');
@@ -45,12 +49,27 @@ const routesToPrerender = [
       const page = await browser.newPage();
       
       console.log(`Prerendering: ${route}`);
+      // Intercept requests to abort images/styles/fonts to speed up
+      await page.setRequestInterception(true);
+      page.on('request', (req) => {
+        if (['image', 'stylesheet', 'font'].includes(req.resourceType())) {
+          req.abort();
+        } else {
+          req.continue();
+        }
+      });
+
       await page.goto(`http://localhost:4173${route}`, {
         waitUntil: 'networkidle0',
+        timeout: 30000,
       });
 
       // Ensure content is loaded (look for footer which is on every page)
-      await page.waitForSelector('.footer');
+      try {
+        await page.waitForSelector('.footer', { timeout: 5000 });
+      } catch (e) {
+        console.warn(`Footer not found on ${route}, continuing...`);
+      }
 
       const html = await page.content();
       

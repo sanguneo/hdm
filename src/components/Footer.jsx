@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import './Footer.css';
 
 export default function Footer() {
   return (
@@ -7,7 +6,10 @@ export default function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-brand">
-            <h2 className="footer-logo">현대모터스</h2>
+            <Link to="/" className="footer-logo">
+              <img src="/whiten.svg" alt="logo" className="logo-icon" />
+              <span>현대모터스</span>
+            </Link>
             <p className="footer-desc">
               미래를 위한 혁신<br />
               글로벌 모터 기술 리더
@@ -16,7 +18,7 @@ export default function Footer() {
 
           <div className="footer-info">
             <h3>고객센터</h3>
-            <p>서울특별시 금천구 가산디지털2로 14 506 (가산동, 대륭테크노타운12차)</p>
+            <p>서울특별시 금천구 가산디지털2로 14<br />대륭테크노타운12차 506호</p>
             <p>Tel: 02-884-2053 | Fax: 02-879-2053</p>
             <p>Email: okg1015@naver.com</p>
             <p>사업자등록번호: 119-04-34520</p>

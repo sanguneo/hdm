@@ -1,5 +1,5 @@
 import Sidebar from '../../components/Sidebar';
-import './Greeting.css';
+import SEO from '../../components/SEO';
 
 export default function Greeting() {
   const sidebarItems = [
@@ -10,27 +10,38 @@ export default function Greeting() {
 
   return (
     <div className="section container layout-with-sidebar">
+      <SEO title="인사말" description="현대모터스 대표이사 인사말. 최고의 품질과 서비스로 보답하겠습니다." url="/company/greeting" />
       <Sidebar title="회사소개" items={sidebarItems} />
       <div className="content">
         <h3 className="page-title">인사말</h3>
 
-        <div className="greeting-content">
-          <h4 className="subtitle">Technology for the Future</h4>
-          <p>
-            안녕하십니까? <strong>현대모터스</strong> 홈페이지를 찾아주신 여러분을 진심으로 환영합니다.<br />
-            저희 현대모터스는 끊임없는 기술 개발과 혁신을 통해 모터 산업의 선두주자로 발돋움하고 있습니다.
-          </p>
-          <p>
-            4차 산업혁명 시대를 맞아 로봇, 자동화, 정밀 제어 분야의 핵심 부품인 고성능 BLDC 모터의 수요가 급증하고 있습니다.
-            이에 저희는 차별화된 기술력과 품질 관리로 고객의 요구에 부합하는 최고의 솔루션을 제공하고자 합니다.
-          </p>
-          <p>
-            고객 여러분의 성원에 보답하기 위해 최고의 품질과 서비스로 다가가겠습니다.<br />
-            감사합니다.
-          </p>
-          <br /><br />
-          <div className="signature">
-            <p>현대모터스 대표 <strong>오 경 교</strong></p>
+        <div className="greeting-container">
+          <div className="greeting-header">
+            <span className="text-orange">항상 고객과 함께 하는</span> <span className="text-blue">'현대모터스'</span> 가 되겠습니다..
+          </div>
+
+          <div className="greeting-body">
+            <p>
+              현대모터스는 모터 생산 및 판매 기업으로 양질의 인력으로 구성된 체계적인 연구개발,<br />
+              철저한 품질관리, 신속한 사후처리를 통해 모터 생산업 현장의 선두에서 선구자의 역할을 하고자 합니다.
+            </p>
+
+            <h4 className="greeting-subtitle">최고의 품질, 최고의 서비스 !!</h4>
+
+            <p>
+              현대 모터스는 현재의 위치에 만족하지 않고 늘 도전하는 자세로 고객여러분의 요구사항에 따라 계속 변화하며<br />
+              창의적인 기업을 일구어냄으로써 고객의 만족과 지속적인 신뢰를 획득하여 고객이 믿고 맡길 수 있는<br />
+              전문기업이 되고자 합니다.
+            </p>
+
+            <div className="greeting-footer-msg">
+              <p>여러분의 끊임없는 관심과 지도편달을 부탁드립니다.</p>
+              <p>감사합니다.</p>
+            </div>
+
+            <div className="greeting-signature">
+              대표 오경교 배상
+            </div>
           </div>
         </div>
       </div>
