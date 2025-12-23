@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+
 
 export default function SEO({ title, description, keywords, image, url }) {
   const siteTitle = '현대모터스 - 정밀 모터 솔루션';
@@ -10,7 +10,7 @@ export default function SEO({ title, description, keywords, image, url }) {
   const displayImage = image ? `${siteUrl}${image}` : `${siteUrl}/images/logo.png`; // Fallback image
 
   return (
-    <Helmet defer={false}>
+    <>
       {/* Basic Metadata */}
       <title>{displayTitle}</title>
       <meta name="description" content={displayDesc} />
@@ -37,6 +37,6 @@ export default function SEO({ title, description, keywords, image, url }) {
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       <link rel="manifest" href="/site.webmanifest" />
-    </Helmet>
+    </>
   );
 }
