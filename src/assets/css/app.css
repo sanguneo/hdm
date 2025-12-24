@@ -714,6 +714,14 @@ img {
   border: 1px solid var(--border-color);
 }
 
+@media (max-width: 360px) {
+  .contact-form-card {
+    margin: 0 -40px;
+    border-radius: 0;
+    border-width: 1px 0 1px 0;
+  }
+}
+
 .contact-form-card h3 {
   font-size: 1.5rem;
   font-weight: 700;
